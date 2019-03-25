@@ -148,7 +148,7 @@ test_irq_latency_init_module(void)
    err = request_any_context_irq(
       test_data.irq,
       test_irq_latency_interrupt_handler,
-      IRQF_TRIGGER_FALLING | IRQF_DISABLED,
+      IRQF_TRIGGER_FALLING,
       DRV_NAME,
       (void*)&test_data
    );
@@ -241,7 +241,7 @@ setup_pinmux(void)
 		(((a)<=3?(a)+4:(a)==4?3:2)<<(((g)%10)*3))
 
    int pin_irq = 23, pin_gpio = 24;
-   u32* gpio = ioremap(0x20200000, SZ_16K);
+   u32* gpio = ioremap(0x7E200000, SZ_16K);
 	
    if (NULL == gpio)
       return -EBUSY;
